@@ -1,15 +1,21 @@
-import React, { Component } from "react";
-import "../App.css";
-import Calendar from "../components/Calendar";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import '../App.css';
+import Calendar from '../components/Calendar';
 
 class App extends Component {
   render() {
+    const { days } = this.props;
     return (
       <div className="App">
-        <Calendar />
+        <Calendar days={days} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = ({ calendar }) => ({
+  days: calendar.days
+});
+
+export default connect(mapStateToProps)(App);

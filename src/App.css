@@ -1,28 +1,49 @@
 .App {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+  padding-left: 100px;
+}
+
+html { 
+  background: url('./images/bg.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border-collapse: collapse;
+  border: 1px solid #e4e7e7;
+  height: 60px;
+  width: 60px;
   text-align: center;
+  font-size: 14px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Cal-Wrapper {
+  width: 600px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+thead > tr > td {
+  border: unset; 
 }
 
-.App-title {
-  font-size: 1.5em;
+.First-Day-Of-Month {
+  border-left: 3px solid #7DFAD2;
 }
 
-.App-intro {
-  font-size: large;
+.Current-Day {
+  color: #ffffff;
+  background: #13C9B7;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Delivery-Day {
+  color: #ffffff;
+  background:#F88789;
 }

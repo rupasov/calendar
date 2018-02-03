@@ -1,41 +1,9 @@
 import React from 'react';
-
-import {
-  eachDayOfInterval,
-  startOfWeek,
-  endOfWeek,
-  addDays,
-  subDays,
-  isSameDay,
-  getTime
-} from 'date-fns';
-import { chunk } from 'lodash';
+import PropTypes from 'prop-types';
+import { getTime } from 'date-fns';
 import classNames from 'classnames';
 
-import { WEEKS_BEFORE, WEEKS_AFTER, DAYS_HEADER } from '../constants';
-
-const getInitialDays = () =>
-  chunk(
-    eachDayOfInterval({
-      start: new Date(
-        subDays(startOfWeek(new Date(), { weekStartsOn: 1 }), WEEKS_BEFORE * 7)
-      ),
-      end: new Date(
-        addDays(endOfWeek(new Date(), { weekStartsOn: 1 }), WEEKS_AFTER * 7)
-      )
-    }),
-    7
-  );
-
-const addPropertiesToDays = () =>
-  getInitialDays().map(week =>
-    week.map(day => ({
-      date: day,
-      delivery: false,
-      firstDayOfMonth: day.getDate() === 1,
-      isToday: isSameDay(new Date(day), new Date())
-    }))
-  );
+import { DAYS_HEADER } from '../constants';
 
 const weekBuilder = row =>
   row.map(day => (
@@ -51,7 +19,7 @@ const weekBuilder = row =>
     </td>
   ));
 
-const Calendar = () => (
+const Calendar = ({ days }) => (
   <div className="Calendar-Wrapper">
     <table>
       <thead>
@@ -60,12 +28,14 @@ const Calendar = () => (
         </tr>
       </thead>
       <tbody>
-        {addPropertiesToDays().map((week, index) => (
-          <tr key={index}>{weekBuilder(week)}</tr>
-        ))}
+        {days.map((week, index) => <tr key={index}>{weekBuilder(week)}</tr>)}
       </tbody>
     </table>
   </div>
 );
+
+Calendar.propTypes = {
+  days: PropTypes.array
+};
 
 export default Calendar;
