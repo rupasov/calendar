@@ -42,28 +42,18 @@ const isDeliveryDayAfter = day =>
 const changeDaysInAWeek = (week, deliveryDays) =>
   week.map(
     (day, index) =>
-      includes(deliveryDays, index + 1)
+      includes(deliveryDays, index + 1) || deliveryDays === index + 1
         ? isDeliveryDayAfter(day)
         : { ...day, delivery: false }
   );
 
-export const updatetDaysWithDeliveryDays = (
-  days,
-  deliveryDays,
-  country,
-  frequency = 2
-) =>
-  days.map(
+export const updatetDaysWithDeliveryDays = (deliveryDays, frequency = 2) =>
+  getDaysWithProperties().map(
     (week, index) =>
       (index + 1) % frequency === 0
-        ? changeDaysInAWeek(
-            week,
-            getDeliveryDaysOfACountry(deliveryDays, country)
-          )
+        ? changeDaysInAWeek(week, deliveryDays)
         : week
   );
 
-export const getDeliveryDaysOfACountry = (deliveryDays, country) => [
-  deliveryDays[country][0].weekday,
-  deliveryDays[country][1].weekday
-];
+export const getDeliveryDaysOfACountry = (deliveryDays, country) =>
+  deliveryDays[country].map(day => day.weekday);

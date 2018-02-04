@@ -11,7 +11,7 @@ const styles = {
   }
 };
 
-const Countries = ({ countries, onChange }) => (
+const CountrySelector = ({ countries, onChange }) => (
   <div>
     <h4>Countries</h4>
     <RadioButtonGroup
@@ -30,9 +30,9 @@ const Countries = ({ countries, onChange }) => (
   </div>
 );
 
-Countries.propTypes = {
+CountrySelector.propTypes = {
   countries: PropTypes.array,
   onChange: PropTypes.func
 };
 
-export default Countries;
+export default CountrySelector;

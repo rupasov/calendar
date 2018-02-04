@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-
+import uuidv1 from 'uuid/v1';
 import { DAYS_LONG } from '../constants';
 
 const styles = {
@@ -13,7 +13,7 @@ const styles = {
   }
 };
 
-const Countries = ({ deliveryDays, changeDeliveryDay }) => (
+const DaySelector = ({ deliveryDays, changeDeliveryDay }) => (
   <div>
     <h4>Delivery Days</h4>
     <RadioButtonGroup
@@ -22,7 +22,7 @@ const Countries = ({ deliveryDays, changeDeliveryDay }) => (
     >
       {deliveryDays.map(day => (
         <RadioButton
-          key={DAYS_LONG[day - 1]}
+          key={uuidv1()}
           value={day}
           label={DAYS_LONG[day - 1]}
           style={styles.radioButton}
@@ -32,9 +32,9 @@ const Countries = ({ deliveryDays, changeDeliveryDay }) => (
   </div>
 );
 
-Countries.propTypes = {
+DaySelector.propTypes = {
   countries: PropTypes.array,
   changeDeliveryDay: PropTypes.func
 };
 
-export default Countries;
+export default DaySelector;

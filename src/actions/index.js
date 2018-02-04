@@ -4,7 +4,9 @@ import {
   LOAD_COUNTRIES,
   CHANGE_COUNTRY,
   SHOW_DELIVERY_DAYS,
-  CHANGE_DELIVERY_DAY
+  CHANGE_DELIVERY_DAY,
+  SHOW_UPDATED_DELIVERY_DAYS,
+  SHOW_UPDATED_DELIVERY_DAYS_WITH_FREQUENCY
 } from '../constants';
 import { getCountries, getDeliveryMoments } from '../utils/requests';
 
@@ -30,11 +32,6 @@ export const loadDeliveryDays = deliveryDays => ({
   deliveryDays
 });
 
-export const changeDeliveryDay = selectedDay => ({
-  type: CHANGE_DELIVERY_DAY,
-  selectedDay
-});
-
 export const changeCountry = country => dispatch => {
   dispatch({
     type: CHANGE_COUNTRY,
@@ -43,5 +40,23 @@ export const changeCountry = country => dispatch => {
   dispatch({
     type: SHOW_DELIVERY_DAYS,
     country
+  });
+};
+
+export const changeDeliveryDay = selectedDay => dispatch => {
+  dispatch({
+    type: CHANGE_DELIVERY_DAY,
+    selectedDay
+  });
+  dispatch({
+    type: SHOW_UPDATED_DELIVERY_DAYS,
+    selectedDay
+  });
+};
+
+export const changeFrequency = frequency => dispatch => {
+  dispatch({
+    type: SHOW_UPDATED_DELIVERY_DAYS_WITH_FREQUENCY,
+    frequency
   });
 };

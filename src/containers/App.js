@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
 import Calendar from '../components/Calendar';
-import Countries from '../components/Countries';
+import CountrySelector from '../components/CountrySelector';
 import DaySelector from '../components/DaySelector';
+import FrequencySelector from '../components/FrequencySelector';
 
 import {
   fetchCountries,
   fetchDeliveryMoments,
   changeCountry,
-  changeDeliveryDay
+  changeDeliveryDay,
+  changeFrequency
 } from '../actions';
 
 import { getDeliveryDaysOfACountry } from '../utils/date';
@@ -27,12 +29,14 @@ class App extends Component {
       changeCountry,
       selectedCountry,
       deliveryDays,
-      changeDeliveryDay
+      changeDeliveryDay,
+      selectedDay,
+      changeFrequency
     } = this.props;
     return (
       <div className="App">
         <Calendar days={days} />
-        <Countries countries={countries} onChange={changeCountry} />
+        <CountrySelector countries={countries} onChange={changeCountry} />
         {selectedCountry && (
           <DaySelector
             deliveryDays={getDeliveryDaysOfACountry(
@@ -42,6 +46,7 @@ class App extends Component {
             changeDeliveryDay={changeDeliveryDay}
           />
         )}
+        {selectedDay && <FrequencySelector changeFrequency={changeFrequency} />}
       </div>
     );
   }
@@ -59,7 +64,8 @@ const mapDispatchToProps = {
   fetchCountries,
   fetchDeliveryMoments,
   changeCountry,
-  changeDeliveryDay
+  changeDeliveryDay,
+  changeFrequency
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
