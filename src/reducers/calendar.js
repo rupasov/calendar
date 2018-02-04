@@ -2,7 +2,8 @@ import {
   LOAD_COUNTRIES,
   LOAD_DELIVERY_DAYS,
   CHANGE_COUNTRY,
-  SHOW_DELIVERY_DAYS
+  SHOW_DELIVERY_DAYS,
+  CHANGE_DELIVERY_DAY
 } from '../constants';
 
 import {
@@ -13,7 +14,9 @@ import {
 const initState = {
   days: getDaysWithProperties(),
   countries: [],
-  deliveryDays: []
+  deliveryDays: [],
+  selectedCountry: '',
+  selectedDay: ''
 };
 
 const calendar = (state = initState, action) => {
@@ -31,15 +34,21 @@ const calendar = (state = initState, action) => {
     case CHANGE_COUNTRY:
       return {
         ...state,
-        country: action.country
+        selectedCountry: action.country
       };
     case SHOW_DELIVERY_DAYS:
       return {
         ...state,
         days: updatetDaysWithDeliveryDays(
           state.days,
-          state.deliveryDays[action.country]
+          state.deliveryDays,
+          action.country
         )
+      };
+    case CHANGE_DELIVERY_DAY:
+      return {
+        ...state,
+        selectedDay: action.selectedDay
       };
     default:
       return state;

@@ -3,7 +3,8 @@ import {
   LOAD_DELIVERY_DAYS,
   LOAD_COUNTRIES,
   CHANGE_COUNTRY,
-  SHOW_DELIVERY_DAYS
+  SHOW_DELIVERY_DAYS,
+  CHANGE_DELIVERY_DAY
 } from '../constants';
 import { getCountries, getDeliveryMoments } from '../utils/requests';
 
@@ -39,3 +40,8 @@ export const changeCountry = country => dispatch => {
     country
   });
 };
+
+export const changeDeliveryDay = selectedDay => ({
+  type: CHANGE_DELIVERY_DAY,
+  selectedDay
+});

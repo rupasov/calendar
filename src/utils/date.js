@@ -7,7 +7,7 @@ import {
   isSameDay,
   isAfter
 } from 'date-fns';
-import { chunk } from 'lodash';
+import { chunk, includes } from 'lodash';
 
 import { WEEKS_BEFORE, WEEKS_AFTER } from '../constants';
 
@@ -34,27 +34,36 @@ export const getDaysWithProperties = () =>
     }))
   );
 
-const isDeliveryDayAfter = date => isAfter(new Date(date), new Date());
+const isDeliveryDayAfter = day =>
+  isAfter(new Date(day.date), new Date())
+    ? { ...day, delivery: true }
+    : { ...day, delivery: false };
 
 const changeDaysInAWeek = (week, deliveryDays) =>
   week.map(
     (day, index) =>
-      index === deliveryDays[0].weekday - 1 ||
-      index === deliveryDays[1].weekday - 1
-        ? isDeliveryDayAfter(day.date)
-          ? { ...day, delivery: true }
-          : { ...day, delivery: false }
+      includes(deliveryDays, index + 1)
+        ? isDeliveryDayAfter(day)
         : { ...day, delivery: false }
   );
 
 export const updatetDaysWithDeliveryDays = (
   days,
   deliveryDays,
+  country,
   frequency = 2
 ) =>
   days.map(
     (week, index) =>
       (index + 1) % frequency === 0
-        ? changeDaysInAWeek(week, deliveryDays)
+        ? changeDaysInAWeek(
+            week,
+            getDeliveryDaysOfACountry(deliveryDays, country)
+          )
         : week
   );
+
+export const getDeliveryDaysOfACountry = (deliveryDays, country) => [
+  deliveryDays[country][0].weekday,
+  deliveryDays[country][1].weekday
+];
