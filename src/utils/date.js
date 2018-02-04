@@ -4,7 +4,8 @@ import {
   endOfWeek,
   addDays,
   subDays,
-  isSameDay
+  isSameDay,
+  isAfter
 } from 'date-fns';
 import { chunk } from 'lodash';
 
@@ -31,4 +32,29 @@ export const getDaysWithProperties = () =>
       firstDayOfMonth: day.getDate() === 1,
       isToday: isSameDay(new Date(day), new Date())
     }))
+  );
+
+const isDeliveryDayAfter = date => isAfter(new Date(date), new Date());
+
+const changeDaysInAWeek = (week, deliveryDays) =>
+  week.map(
+    (day, index) =>
+      index === deliveryDays[0].weekday - 1 ||
+      index === deliveryDays[1].weekday - 1
+        ? isDeliveryDayAfter(day.date)
+          ? { ...day, delivery: true }
+          : { ...day, delivery: false }
+        : { ...day, delivery: false }
+  );
+
+export const updatetDaysWithDeliveryDays = (
+  days,
+  deliveryDays,
+  frequency = 2
+) =>
+  days.map(
+    (week, index) =>
+      (index + 1) % frequency === 0
+        ? changeDaysInAWeek(week, deliveryDays)
+        : week
   );

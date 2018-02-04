@@ -1,16 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import './index.css';
-import App from './containers/App';
-import reducers from './reducers';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-const store = createStore(reducers);
+import './index.css';
+import reducers from './reducers';
+import App from './containers/App';
+
+const middlewares = [];
+
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require(`redux-logger`);
+
+  middlewares.push(logger);
+}
+
+middlewares.push(thunk);
+
+const store = compose(applyMiddleware(...middlewares))(createStore)(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
