@@ -18,9 +18,9 @@ const Countries = ({ countries, onChange }) => (
       name="countrySelect"
       onChange={(event, value) => onChange(value)}
     >
-      {countries.map((val, index) => (
+      {countries.map(val => (
         <RadioButton
-          key={index}
+          key={val}
           value={val}
           label={val}
           style={styles.radioButton}

@@ -16,7 +16,7 @@ const initState = {
   countries: [],
   deliveryDays: [],
   selectedCountry: '',
-  selectedDay: ''
+  selectedDay: null
 };
 
 const calendar = (state = initState, action) => {

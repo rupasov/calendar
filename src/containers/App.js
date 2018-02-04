@@ -26,7 +26,8 @@ class App extends Component {
       countries,
       changeCountry,
       selectedCountry,
-      deliveryDays
+      deliveryDays,
+      changeDeliveryDay
     } = this.props;
     return (
       <div className="App">

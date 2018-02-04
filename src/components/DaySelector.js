@@ -22,7 +22,7 @@ const Countries = ({ deliveryDays, changeDeliveryDay }) => (
     >
       {deliveryDays.map(day => (
         <RadioButton
-          key={day}
+          key={DAYS_LONG[day - 1]}
           value={day}
           label={DAYS_LONG[day - 1]}
           style={styles.radioButton}

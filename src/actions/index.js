@@ -30,6 +30,11 @@ export const loadDeliveryDays = deliveryDays => ({
   deliveryDays
 });
 
+export const changeDeliveryDay = selectedDay => ({
+  type: CHANGE_DELIVERY_DAY,
+  selectedDay
+});
+
 export const changeCountry = country => dispatch => {
   dispatch({
     type: CHANGE_COUNTRY,
@@ -40,8 +45,3 @@ export const changeCountry = country => dispatch => {
     country
   });
 };
-
-export const changeDeliveryDay = selectedDay => ({
-  type: CHANGE_DELIVERY_DAY,
-  selectedDay
-});
