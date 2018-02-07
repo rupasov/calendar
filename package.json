@@ -19,11 +19,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage --verbose",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "mockdate": "^2.0.2",
     "prettier": "1.10.2",
+    "react-test-renderer": "^16.2.0",
     "redux-logger": "^3.0.6"
   }
 }

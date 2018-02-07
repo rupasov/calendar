@@ -11,7 +11,7 @@ import { chunk, includes } from 'lodash';
 
 import { WEEKS_BEFORE, WEEKS_AFTER } from '../constants';
 
-const getInitialDays = () =>
+export const getInitialDays = () =>
   chunk(
     eachDayOfInterval({
       start: new Date(
@@ -24,7 +24,7 @@ const getInitialDays = () =>
     7
   );
 
-export const getDaysWithProperties = () =>
+export const getDaysWithProperties = (date = new Date()) =>
   getInitialDays().map(week =>
     week.map(day => ({
       date: day,

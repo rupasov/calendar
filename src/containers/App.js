@@ -16,7 +16,7 @@ import {
 
 import { getDeliveryDaysOfACountry } from '../utils/date';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     const { fetchCountries, fetchDeliveryMoments } = this.props;
     fetchCountries();

@@ -26,11 +26,13 @@ Simple calendar with a form
 - redux
 - redux-thunk
 
-## Missing parts
+## TODOS
 
 - Tests
+- Change edux thunks to sagas (it's easier to test sagas)
 - Validation (front + back)
 - Summary page (and routing)
 - Styling should use the Styled Components library
+- make it responsive
 - POST call to save the order (front)
 - api for the saving the order (back)

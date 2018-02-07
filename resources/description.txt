@@ -1,0 +1,129 @@
+# Bloomon Challenge
+
+## Task
+
+* You are required to build **both** the **client** & **API**
+* The frontend UI should be built in **React**
+* The API in **Node.js / Express** with **MySQL**
+* You can **add more libs / frameworks if you want to** but please **explain** below why you chose them.
+
+Spend **a maximum of 8 hours** on this assignment, the goal is to create an **MVP** where you **show off your technical abilities and workflow.**
+
+**WE DO NOT EXPECT YOU TO COMPLETE EVERYTHING**
+ 
+## The Challenge Itself
+
+The idea is to build a slimmed down bouquet subscription page. 
+
+The application must contain a minimum of **2 pages**:
+
+### Details Page
+
+The user should see an **overview** of **8 weeks** here.
+
+- **1 week before** the current week
+- the **current week**
+- **6 weeks after** the current week
+
+see [calendar_detail.png](calendar_detail.png) for a possible solution, you're free to provide your own solution
+
+in this example:
+
+- **black dot**: current day
+- **gray dot**: delivery moment
+
+A user must be able to set **a minimum** of following parameters:
+
+All changes to these parameters should be directly reflected in the calendar. When everything is filled in the User should be able to submit this to the Database and be redirected to the 'Summary' page.
+
+### Firstname
+
+The user's first name
+
+### Country
+
+Fetched from the API
+
+### Delivery Moments
+
+Fetched from the API (specific per country)
+
+Possible delivery moments per country (provided in the database) are:
+
+- **Germany**: Tuesday / Thursday
+- **Netherlands**: Wednesday / Friday
+- **United Kingdom**: Thursday / Friday
+
+### Delivery Frequencies
+
+(hardcoded values)
+
+Possible delivery frequencies are:
+
+- every **2** weeks
+- every **4** weeks
+
+## Summary Page
+
+The 'Summary' page should contain the following text, make sure the placeholders are filled in correctly.
+
+---
+
+Thanks for creating a Bloomon subscription **[firstname]**, your first bouquet will be delivered on **[first delivery date]** 
+
+Just **[nights of sleep]** nights of sleep left...
+
+After that you will receive our beautiful bouquets every **[frequency]** weeks on **[weekday]**.
+
+---
+
+## What We Are Looking For
+
+* A professional approach to tackling the problem.
+* Documentation of your process (e.g. document prioritisation, commit often, use comments, etc)
+* Clean and well structured code.
+* Modern JS techniques.
+* Best practices.
+
+## How to start?
+
+Host this start project on a private repository and make sure [maria.gil@bloomon.nl](mailto:maria.gil@bloomon.nl) has access from the beginning.
+
+- **GitHub**: [mariaS2M](https://github.com/mariaS2M)
+- **Gitlab**: [maria.gil](https://gitlab.com/maria.gil)
+
+You can create free private repositories on GitLab.
+
+Please contact Maria if you're not using GitHub or GitLab.
+
+**!!! important !!!**
+
+[ Determine, estimate & prioritise tasks here **BEFORE** working on the assignment, commit this first ]
+
+## Provided Data / Stucture
+
+### /client
+
+The client is bootstrapped with **create-react-app**
+
+1. Install the dependencies with `yarn`
+2. Start the dev server with `yarn dev`.
+3. Navigate to `http://localhost:3000`.
+
+### /api
+
+1. Install the dependencies with `yarn`
+2. Start the dev server with `yarn dev`.
+3. Navigate to `http://localhost:8080`.
+
+### database
+
+We've provided a `db_dump.sql` file to start from 
+
+## So you're done?
+
+Just let [maria.gil@bloomon.nl](mailto:maria.gil@bloomon.nl) know, and we'll get back to you as soon as possible.
+
+## Libs / Additional Info & Feedback
+
+[ Please provide an overview of added libs / frameworks + additional feedback here ]

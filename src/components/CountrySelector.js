@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 const styles = {
   block: {
@@ -11,7 +12,7 @@ const styles = {
   }
 };
 
-const CountrySelector = ({ countries, onChange }) => (
+export const CountrySelector = ({ countries, onChange }) => (
   <div>
     <h4>Countries</h4>
     <RadioButtonGroup
@@ -35,4 +36,4 @@ CountrySelector.propTypes = {
   onChange: PropTypes.func
 };
 
-export default CountrySelector;
+export default muiThemeable()(CountrySelector);
